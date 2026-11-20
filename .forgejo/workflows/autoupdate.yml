@@ -6,11 +6,18 @@ on:
 
 jobs:
   update:
-    runs-on: docker
+    runs-on: ubuntu-latest
+    container:
+      image: data.forgejo.org/oci/node:20-bookworm
     steps:
+      - name: Install tools
+        run: apt-get update -qq && apt-get install -y -qq jq
+
       - uses: actions/checkout@v4
+
       - name: Update manifest
         run: bash scripts/update-mornye.sh
+
       - name: Commit and push
         run: |
           git config user.name "autoupdate"
