@@ -1,0 +1,21 @@
+name: autoupdate
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: docker
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update manifest
+        run: bash scripts/update-mornye.sh
+      - name: Commit and push
+        run: |
+          git config user.name "autoupdate"
+          git config user.email "autoupdate@users.noreply.codefloe.com"
+          if ! git diff --quiet; then
+            git commit -am "mornye: update to $(jq -r .version bucket/mornye.json)"
+            git push
+          fi
