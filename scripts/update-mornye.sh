@@ -14,27 +14,32 @@ if [ "$ver" = "$cur" ]; then
 fi
 
 base="https://github.com/$REPO/releases/download/$tag"
-sums=$(curl -fsSL "$base/SHA256SUMS.txt")
+sums=$(curl -fsSL "$base/SHA256SUMS.txt" | tr -d '\r')
 
-hash_of() {
-  echo "$sums" | awk -v f="$1" '{n=$2; sub(/^\*/,"",n); if (n==f) print $1}'
+# Print "<hash> <filename>" for the one file matching the pattern, else fail.
+find_asset() {
+  local m
+  m=$(echo "$sums" | awk '{n=$2; sub(/^\*/,"",n); print $1, n}' | grep -E "$1" || true)
+  if [ "$(echo "$m" | grep -c .)" -ne 1 ]; then
+    echo "expected exactly one match for /$1/ in SHA256SUMS.txt for $tag, got:" >&2
+    echo "$m" >&2
+    exit 1
+  fi
+  echo "$m"
 }
 
-x64=$(hash_of "Mornye-$tag-windows-x64-portable.zip")
-arm=$(hash_of "Mornye-$tag-windows-arm64-portable.zip")
-
-if [ -z "$x64" ] || [ -z "$arm" ]; then
-  echo "hash not found in SHA256SUMS.txt for $tag" >&2
-  exit 1
-fi
+x64=$(find_asset 'windows-x64-portable.*\.zip$')
+arm=$(find_asset 'windows-arm64-portable.*\.zip$')
+x64_hash=${x64%% *};  x64_name=${x64#* }
+arm_hash=${arm%% *};  arm_name=${arm#* }
 
 jq --indent 4 \
-  --arg v "$ver" --arg x "$x64" --arg a "$arm" \
-  --arg ux "$base/Mornye-$tag-windows-x64-portable.zip" \
-  --arg ua "$base/Mornye-$tag-windows-arm64-portable.zip" \
+  --arg v "$ver" \
+  --arg xh "$x64_hash" --arg xu "$base/$x64_name" \
+  --arg ah "$arm_hash" --arg au "$base/$arm_name" \
   '.version=$v
-   | .architecture["64bit"].url=$ux | .architecture["64bit"].hash=$x
-   | .architecture.arm64.url=$ua   | .architecture.arm64.hash=$a' \
+   | .architecture["64bit"].url=$xu | .architecture["64bit"].hash=$xh
+   | .architecture.arm64.url=$au   | .architecture.arm64.hash=$ah' \
   "$M" > "$M.tmp" && mv "$M.tmp" "$M"
 
 echo "updated $cur -> $ver"
