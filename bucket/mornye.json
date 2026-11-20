@@ -1,3 +1,4 @@
+
 {
     "version": "5.4.0",
     "description": "Open-source desktop music player",
@@ -26,7 +27,7 @@
             }
         },
         "hash": {
-            "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v$version/SHA256SUMS.txt"
+            "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v$version/SHA256SUMS.txt",
             "regex": "$sha256\\s+Mornye-v$version-windows-x64-portable\\.zip"
         }
     }
