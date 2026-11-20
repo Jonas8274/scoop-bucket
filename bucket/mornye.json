@@ -1,21 +1,21 @@
-
 {
     "version": "5.4.0",
-    "description": "Open-source desktop music player",
+    "description": "Open-source desktop music player for your personal library",
     "homepage": "https://desktop.mornye.com/",
     "license": "LGPL-3.0-only",
     "architecture": {
         "64bit": {
             "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v5.4.0/Mornye-v5.4.0-windows-x64-portable.zip",
             "hash": "ef43280811c7e2d65d5fb6c30be87cd0295f6572746c27cefc15e754a3be9dcd"
+        },
+        "arm64": {
+            "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v5.4.0/Mornye-v5.4.0-windows-arm64-portable.zip",
+            "hash": "494c573a1fef7a512950d1f431c26fea7ad6d79f985227ac7d9160282763e704"
         }
     },
     "bin": "mornye.exe",
     "shortcuts": [
-        [
-            "mornye.exe",
-            "Mornye"
-        ]
+        ["mornye.exe", "Mornye"]
     ],
     "checkver": {
         "github": "https://github.com/mornyeapp/Mornye-Desktop"
@@ -24,11 +24,13 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v$version/Mornye-v$version-windows-x64-portable.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v$version/Mornye-v$version-windows-arm64-portable.zip"
             }
         },
         "hash": {
-            "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v$version/SHA256SUMS.txt",
-            "regex": "$sha256\\s+Mornye-v$version-windows-x64-portable\\.zip"
+            "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v$version/SHA256SUMS.txt"
         }
     }
 }
