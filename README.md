@@ -29,22 +29,19 @@ You should see `Jonas8272` in the list of installed buckets.
 
 ## Installing Mornye
 
+Open-source desktop music player for your personal library.
+
 ```powershell
 scoop install Jonas8272/mornye
 ```
 
 ## Installing socialstreamninja
 
+Combines live chat from many platforms into one stream for OBS overlays (desktop app).
+
 ```powershell
 scoop install Jonas8272/socialstreamninja
 ```
-
-### Available apps
-
-| App | Description |
-| --- | --- |
-| `mornye` | Open-source desktop music player for your personal library |
-| `socialstreamninja` | Combines live chat from many platforms into one stream for OBS overlays (desktop app) |
 
 ## Updating
 
