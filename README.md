@@ -20,7 +20,7 @@ scoop bucket add Jonas8272 https://codefloe.com/Jonas8272/scoop-bucket
 
 3. Verify installation
 
-To verify that the bucket was added successfully:
+To verify that the bucket was added successfully, run:
 
 powershell
 scoop bucket list
@@ -53,13 +53,13 @@ scoop update *
 
 Uninstallation
 
-To remove this bucket from Scoop:
+To remove this bucket from Scoop, run:
 
 powershell
 scoop bucket rm Jonas8272
 
 
-Removing the bucket does not automatically uninstall applications previously installed from it.
+Note: Removing the bucket does not automatically uninstall applications previously installed from it.
 
 Useful Links
 Scoop Official Website
