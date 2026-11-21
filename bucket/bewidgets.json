@@ -1,0 +1,12 @@
+{
+    "version": "1.0",
+    "description": "BeWidgets desktop widgets (installed from the Microsoft Store via winget)",
+    "homepage": "https://bexcool.com/",
+    "license": "Freeware",
+    "installer": {
+        "script": "winget install --id 9NQ07FG50H2Q --source msstore --accept-package-agreements --accept-source-agreements"
+    },
+    "uninstaller": {
+        "script": "winget uninstall --id 9NQ07FG50H2Q --source msstore"
+    }
+}
