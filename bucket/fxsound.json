@@ -1,5 +1,5 @@
 {
-    "version": "0.0.0",
+    "version": "1.2.17.0",
     "description": "FxSound: open-source audio enhancer with equalizer, effects and presets",
     "homepage": "https://www.fxsound.com/",
     "license": "AGPL-3.0-only",
@@ -9,12 +9,12 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/fxsound2/fxsound-app/releases/download/v0.0.0/fxsound_setup.exe",
-            "hash": "0000000000000000000000000000000000000000000000000000000000000000"
+            "url": "https://github.com/fxsound2/fxsound-app/releases/download/v1.2.17.0/fxsound_setup.exe",
+            "hash": "cac67c030fd1d9bbaff5cbe19e7d3d874275cf6913e1adcc7f52521697397464"
         },
         "arm64": {
-            "url": "https://github.com/fxsound2/fxsound-app/releases/download/v0.0.0/fxsound_setup.arm64.exe",
-            "hash": "0000000000000000000000000000000000000000000000000000000000000000"
+            "url": "https://github.com/fxsound2/fxsound-app/releases/download/v1.2.17.0/fxsound_setup.arm64.exe",
+            "hash": "72484711a9a9d903b03e6898429024aa25aa2a49643034e95074ff1272762120"
         }
     },
     "pre_install": [
