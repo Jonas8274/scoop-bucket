@@ -2,7 +2,7 @@
     "version": "0.0.0",
     "description": "Combines live chat from YouTube, Twitch, TikTok and many other platforms into one stream for OBS overlays (desktop app)",
     "homepage": "https://socialstream.ninja/",
-    "license": "REPLACE_WITH_LICENSE",
+    "license": "GPL-3.0 license",
     "url": "https://github.com/steveseguin/social_stream/releases/download/v0.0.0/socialstreamninja-portable.exe",
     "hash": "0000000000000000000000000000000000000000000000000000000000000000",
     "bin": "socialstreamninja-portable.exe",
