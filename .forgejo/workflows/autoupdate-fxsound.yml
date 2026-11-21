@@ -1,7 +1,7 @@
 name: autoupdate-fxsound
 on:
   schedule:
-    - cron: '41 4 * * *'
+    - cron: '41 */6 * * *'
   workflow_dispatch:
 
 jobs:

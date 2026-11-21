@@ -1,7 +1,7 @@
 name: autoupdate-socialstreamninja
 on:
   schedule:
-    - cron: '29 4 * * *'
+    - cron: '29 */6 * * *'
   workflow_dispatch:
 
 jobs:
