@@ -46,10 +46,11 @@ if (-not (Test-Command 'git')) {
 # 3. Bucket ------------------------------------------------------------------
 $existing = scoop bucket list | Where-Object {
     $_.Name -eq $BucketName -or $_.Source -like '*Jonas8272/scoop-bucket*'
-}
+} | Select-Object -First 1
 
 if ($existing) {
-    Write-Host "Bucket '$($existing.Name)' is already added." -ForegroundColor Green
+    $BucketName = $existing.Name
+    Write-Host "Bucket '$BucketName' is already added." -ForegroundColor Green
 } else {
     Write-Host "Adding bucket '$BucketName'..." -ForegroundColor Cyan
     scoop bucket add $BucketName $BucketUrl
