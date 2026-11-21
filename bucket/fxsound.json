@@ -1,0 +1,37 @@
+{
+    "version": "0.0.0",
+    "description": "FxSound: open-source audio enhancer with equalizer, effects and presets",
+    "homepage": "https://www.fxsound.com/",
+    "license": "AGPL-3.0-only",
+    "notes": [
+        "Installs a virtual audio driver. Run in an admin shell: sudo scoop install fxsound",
+        "Do not run FxSound in the background when uninstalling."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://raw.githubusercontent.com/fxsound2/fxsound-app/v0.0.0/release/fxsound_setup.exe",
+            "hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+    },
+    "pre_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\$fname\" -Wait -Verb 'RunAs' -Args @('/exenoui', '/qn')",
+        "Start-Process \"$dir\\$fname\" -Wait -Verb 'RunAs' -Args @('/extract', $dir)",
+        "Remove-Item \"$dir\\$fname\"; Start-Sleep -Seconds 10; taskkill /f /im 'FxSound.exe' | Out-Null"
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "$msg = \"Please make sure the application, '$app' isn't running in the background before uninstalling!\"",
+        "if ($cmd -eq 'uninstall') {",
+        "    if (Get-Process -Name 'FxSound' -ErrorAction 'SilentlyContinue') { error $msg; break }",
+        "    Start-Process 'msiexec' -Wait -Verb 'RunAs' -Args @('/x', \"$dir\\fxsound.x64.msi\", '/qn', 'REBOOT=ReallySuppress', '/norestart')",
+        "}"
+    ],
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://raw.githubusercontent.com/fxsound2/fxsound-app/v$version/release/fxsound_setup.exe"
+            }
+        }
+    }
+}
