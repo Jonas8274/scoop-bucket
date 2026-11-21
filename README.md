@@ -40,22 +40,22 @@ irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/add-bucket.ps1
 This does the same setup and then installs all the apps listed below:
 
 ```powershell
-irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/install-all.ps1 | iex
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-all.ps1 | iex
 ```
 
 Apps that need administrator rights (FxSound) are skipped unless you run it from an elevated PowerShell. To choose which apps to install, download the script and pass `-Only` or `-Exclude`:
 
 ```powershell
-irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/install-all.ps1 -OutFile install-all.ps1
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-all.ps1 -OutFile install-all.ps1
 .\install-all.ps1 -Exclude fxsound
 .\install-all.ps1 -Only mornye,socialstreamninja
 ```
 
 ### Install a single app with a script
 
-Every app also has its own script (`install-<app>.ps1`). It does the same setup as above (Scoop, git and the bucket, only if missing) and then installs just that app. The one-liner for each app is in its section below. Run it in a normal (non-admin) PowerShell window, except for FxSound, which needs an elevated one.
+Every app also has its own script (`install-<app>.ps1`) in the [`installations`](installations) folder. It does the same setup as above (Scoop, git and the bucket, only if missing) and then installs just that app. The one-liner for each app is in its section below. Run it in a normal (non-admin) PowerShell window, except for FxSound, which needs an elevated one.
 
-> **Tip:** Read a script before you run it. All scripts are in this repository.
+> **Tip:** Read a script before you run it. All scripts are in the `installations` folder of this repository.
 
 ## Installing Mornye
 
@@ -68,7 +68,7 @@ scoop install Jonas8272/mornye
 Or set up everything and install it with one script:
 
 ```powershell
-irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/install-mornye.ps1 | iex
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-mornye.ps1 | iex
 ```
 
 ## Installing socialstreamninja
@@ -82,7 +82,7 @@ scoop install Jonas8272/socialstreamninja
 Or set up everything and install it with one script:
 
 ```powershell
-irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/install-socialstreamninja.ps1 | iex
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-socialstreamninja.ps1 | iex
 ```
 
 ## Installing bewidgets
@@ -96,7 +96,7 @@ scoop install Jonas8272/bewidgets
 Or set up everything and install it with one script:
 
 ```powershell
-irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/install-bewidgets.ps1 | iex
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-bewidgets.ps1 | iex
 ```
 
 > **Note:** This one is installed from the Microsoft Store through winget. The Store updates it, not `scoop update`.
@@ -112,7 +112,7 @@ scoop install Jonas8272/fxsound
 Or set up everything and install it with one script (from an elevated PowerShell):
 
 ```powershell
-irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/install-fxsound.ps1 | iex
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-fxsound.ps1 | iex
 ```
 
 > **Note:** FxSound installs an audio driver, so run PowerShell as administrator for this one. The script stops with a message if it is not elevated.
@@ -128,7 +128,7 @@ scoop install Jonas8272/wintoys
 Or set up everything and install it with one script:
 
 ```powershell
-irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/install-wintoys.ps1 | iex
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-wintoys.ps1 | iex
 ```
 
 > **Note:** This one is installed from the Microsoft Store through winget. The Store updates it, not `scoop update`.
