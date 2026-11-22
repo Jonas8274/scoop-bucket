@@ -43,17 +43,18 @@ This does the same setup and then installs all the apps listed below:
 irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-all.ps1 | iex
 ```
 
-Apps that need administrator rights (FxSound and VMware Workstation Pro) are skipped unless you run it from an elevated PowerShell. To choose which apps to install, download the script and pass `-Only` or `-Exclude`:
+Apps that need administrator rights (FxSound and VMware Workstation Pro) are skipped unless you run it from an elevated PowerShell. Pre-release (`-beta`) apps are skipped unless you name them with `-Only`. To choose which apps to install, download the script and pass `-Only` or `-Exclude`:
 
 ```powershell
 irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-all.ps1 -OutFile install-all.ps1
 .\install-all.ps1 -Exclude fxsound,vmware-workstation-pro
 .\install-all.ps1 -Only mornye,socialstreamninja
+.\install-all.ps1 -Only socialstreamninja-beta
 ```
 
 ### Install a single app with a script
 
-Every app also has its own script (`install-<app>.ps1`) in the [`installations`](installations) folder. It does the same setup as above (Scoop, git and the bucket, only if missing) and then installs just that app. The one-liner for each app is in its section below. Run it in a normal (non-admin) PowerShell window, except for FxSound and VMware Workstation Pro, which need an elevated one.
+Every app also has its own script (`install-<app>.ps1`) in the [`installations`](https://git.jonas8272.com/Jonas8272/scoop-bucket/src/branch/master/installations) folder. It does the same setup as above (Scoop, git and the bucket, only if missing) and then installs just that app. The one-liner for each app is in its section below. Run it in a normal (non-admin) PowerShell window, except for FxSound and VMware Workstation Pro, which need an elevated one.
 
 > **Tip:** Read a script before you run it. All scripts are in the `installations` folder of this repository.
 
@@ -84,6 +85,24 @@ Or set up everything and install it with one script:
 ```powershell
 irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-socialstreamninja.ps1 | iex
 ```
+
+## Installing socialstreamninja-beta
+
+The pre-release (test build) channel of socialstreamninja. It follows the newest pre-release published on [GitHub](https://github.com/steveseguin/social_stream/releases) instead of the latest stable release.
+
+```powershell
+scoop install Jonas8272/socialstreamninja-beta
+```
+
+Or set up everything and install it with one script:
+
+```powershell
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-socialstreamninja-beta.ps1 | iex
+```
+
+> **Note:** Pre-releases have not completed broad real-world testing and may contain issues. Export your settings from the app before installing or updating.
+
+> **Note:** The beta uses its own command (`socialstreamninja-beta`), Start menu shortcut (Social Stream Ninja (Beta)) and data folder, so it can be installed next to the stable `socialstreamninja` without clashing, but the two do not share settings.
 
 ## Installing bewidgets
 
