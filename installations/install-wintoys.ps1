@@ -75,14 +75,15 @@ $existing = scoop bucket list | Where-Object {
 
 if ($existing) {
     $BucketName = $existing.Name
-    Write-Host "Bucket '$BucketName' is already added." -ForegroundColor Green
+    Write-Host "Bucket '$BucketName' is already added. Updating it..." -ForegroundColor Green
+    scoop update
 } else {
     Write-Host "Adding bucket '$BucketName'..." -ForegroundColor Cyan
     scoop bucket add $BucketName $BucketUrl
     if ($LASTEXITCODE -ne 0) { throw "Failed to add bucket '$BucketName'." }
 }
 
-# 4. The app -----------------------------------------------------------------
+# 4. The app ------------------------------------------------------------------
 Write-Host ''
 Write-Host "Installing $App..." -ForegroundColor Cyan
 scoop install "$BucketName/$App"
