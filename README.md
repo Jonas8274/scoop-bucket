@@ -43,17 +43,17 @@ This does the same setup and then installs all the apps listed below:
 irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-all.ps1 | iex
 ```
 
-Apps that need administrator rights (FxSound) are skipped unless you run it from an elevated PowerShell. To choose which apps to install, download the script and pass `-Only` or `-Exclude`:
+Apps that need administrator rights (FxSound and VMware Workstation Pro) are skipped unless you run it from an elevated PowerShell. To choose which apps to install, download the script and pass `-Only` or `-Exclude`:
 
 ```powershell
 irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-all.ps1 -OutFile install-all.ps1
-.\install-all.ps1 -Exclude fxsound
+.\install-all.ps1 -Exclude fxsound,vmware-workstation-pro
 .\install-all.ps1 -Only mornye,socialstreamninja
 ```
 
 ### Install a single app with a script
 
-Every app also has its own script (`install-<app>.ps1`) in the [`installations`](installations) folder. It does the same setup as above (Scoop, git and the bucket, only if missing) and then installs just that app. The one-liner for each app is in its section below. Run it in a normal (non-admin) PowerShell window, except for FxSound, which needs an elevated one.
+Every app also has its own script (`install-<app>.ps1`) in the [`installations`](installations) folder. It does the same setup as above (Scoop, git and the bucket, only if missing) and then installs just that app. The one-liner for each app is in its section below. Run it in a normal (non-admin) PowerShell window, except for FxSound and VMware Workstation Pro, which need an elevated one.
 
 > **Tip:** Read a script before you run it. All scripts are in the `installations` folder of this repository.
 
@@ -164,6 +164,26 @@ irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/
 ```
 
 > **Note:** This one is installed through winget. Edge is already built into Windows, so this usually just reports that it is installed. Edge updates itself, not `scoop update`.
+
+## Installing vmware-workstation-pro
+
+VMware Workstation Pro 26H1u1 (build 25688693): run virtual machines on Windows.
+
+```powershell
+scoop install Jonas8272/vmware-workstation-pro
+```
+
+Or set up everything and install it with one script (from an elevated PowerShell):
+
+```powershell
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-vmware-workstation-pro.ps1 | iex
+```
+
+> **Note:** VMware installs drivers and virtual network adapters, so run PowerShell as administrator for this one. The script stops with a message if it is not elevated, and you may need to restart Windows afterwards.
+
+> **Note:** The installer (about 267 MB) is downloaded from the [`vmwareworkstationarchive`](https://archive.org/details/vmwareworkstationarchive) item on archive.org, a third-party upload of Broadcom's installer. The download is checked against a pinned SHA-256 hash, and the file's digital signature was verified as Broadcom Inc. VMware is proprietary software, so Broadcom's licence terms apply.
+
+> **Note:** There is no autoupdate for this one. New builds only appear in that archive when its owner uploads them, so the version, URL and hash in `bucket/vmware-workstation-pro.json` are updated by hand.
 
 ## Updating
 
