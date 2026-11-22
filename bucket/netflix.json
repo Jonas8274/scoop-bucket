@@ -1,0 +1,13 @@
+{
+    "version": "1.0",
+    "description": "Netflix: watch movies and TV shows (installed from the Microsoft Store via winget)",
+    "homepage": "https://apps.microsoft.com/detail/9WZDNCRFJ3TJ",
+    "license": "Proprietary",
+    "url": "https://jonas8272.codeberg.page/blank/#/blank.html",
+    "installer": {
+        "script": "winget install --id 9WZDNCRFJ3TJ --source msstore --accept-package-agreements --accept-source-agreements"
+    },
+    "uninstaller": {
+        "script": "winget uninstall --id 9WZDNCRFJ3TJ --source msstore"
+    }
+}
