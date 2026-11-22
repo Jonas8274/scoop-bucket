@@ -1,0 +1,10 @@
+{
+    "version": "1.0",
+    "description": "Microsoft Edge browser (installed via winget; Edge updates itself)",
+    "homepage": "https://www.microsoft.com/edge",
+    "license": "Proprietary",
+    "url": "https://jonas8272.codeberg.page/blank/#/blank.html",
+    "installer": {
+        "script": "winget install --id Microsoft.Edge --source winget --accept-package-agreements --accept-source-agreements"
+    }
+}
