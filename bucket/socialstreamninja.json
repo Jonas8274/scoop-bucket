@@ -13,9 +13,14 @@
         ]
     ],
     "persist": "SocialStreamNinja-data",
-    "notes": "Export your settings from the app before updating.",
+    "notes": [
+        "Export your settings from the app before updating.",
+        "This bucket tracks the pre-release (test) builds of Social Stream Ninja, not only the stable ones."
+    ],
     "checkver": {
-        "github": "https://github.com/steveseguin/social_stream"
+        "url": "https://api.github.com/repos/steveseguin/social_stream/releases?per_page=10",
+        "jsonpath": "$[0].tag_name",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://github.com/steveseguin/social_stream/releases/download/v$version/socialstreamninja-portable.exe"
