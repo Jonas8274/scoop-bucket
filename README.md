@@ -167,7 +167,7 @@ irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/
 
 ## Installing vmware-workstation-pro
 
-VMware Workstation Pro 26H1u1 (build 25688693): run virtual machines on Windows.
+VMware Workstation Pro: run virtual machines on Windows.
 
 ```powershell
 scoop install Jonas8272/vmware-workstation-pro
@@ -181,9 +181,9 @@ irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/
 
 > **Note:** VMware installs drivers and virtual network adapters, so run PowerShell as administrator for this one. The script stops with a message if it is not elevated, and you may need to restart Windows afterwards.
 
-> **Note:** The installer (about 267 MB) is downloaded from the [`vmwareworkstationarchive`](https://archive.org/details/vmwareworkstationarchive) item on archive.org, a third-party upload of Broadcom's installer. The download is checked against a pinned SHA-256 hash, and the file's digital signature was verified as Broadcom Inc. VMware is proprietary software, so Broadcom's licence terms apply.
+> **Note:** The installer (about 267 MB) is downloaded from the [`vmwareworkstationarchive`](https://archive.org/details/vmwareworkstationarchive) item on archive.org, a third-party upload of Broadcom's installer. The download is checked against a pinned SHA-256 hash, and the file's digital signature is verified as Broadcom Inc. VMware is proprietary software, so Broadcom's licence terms apply.
 
-> **Note:** There is no autoupdate for this one. New builds only appear in that archive when its owner uploads them, so the version, URL and hash in `bucket/vmware-workstation-pro.json` are updated by hand.
+> **Note:** This one updates automatically. A workflow checks the archive every 6 hours. When a newer build appears, it downloads it, checks the size, md5 and that the signature is valid and from Broadcom Inc, then commits the new version, URL and SHA-256 to `bucket/vmware-workstation-pro.json`. If any check fails, nothing is changed. Builds only show up when the archive's owner uploads them, so a new VMware release can take a while to arrive.
 
 ## Updating
 
