@@ -1,0 +1,28 @@
+name: autoupdate-vmware-workstation-pro
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    container:
+      image: data.forgejo.org/oci/node:20-bookworm
+    steps:
+      - name: Install tools
+        run: apt-get update -qq && apt-get install -y -qq jq curl ca-certificates osslsigncode
+
+      - uses: actions/checkout@v4
+
+      - name: Update manifest
+        run: tr -d '\r' < scripts/update-vmware-workstation-pro.sh | bash
+
+      - name: Commit and push
+        run: |
+          git config user.name "autoupdate"
+          git config user.email "autoupdate@users.noreply.codefloe.com"
+          if ! git diff --quiet; then
+            git commit -am "vmware-workstation-pro: update to $(jq -r .version bucket/vmware-workstation-pro.json)"
+            git push
+          fi
