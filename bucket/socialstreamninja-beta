@@ -1,0 +1,34 @@
+{
+    "version": "0.4.50",
+    "description": "Pre-release (beta) channel of Social Stream Ninja: combines live chat from YouTube, Twitch, TikTok and many other platforms into one stream for OBS overlays (desktop app)",
+    "homepage": "https://socialstream.ninja/",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/steveseguin/social_stream/releases/download/v0.4.50/socialstreamninja-portable.exe",
+    "hash": "e1f31df7d2c2e9f609064d26bf3a5d6fa19457e54583ea504cdcf1598928735e",
+    "bin": [
+        [
+            "socialstreamninja-portable.exe",
+            "socialstreamninja-beta"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "socialstreamninja-portable.exe",
+            "Social Stream Ninja (Beta)"
+        ]
+    ],
+    "persist": "SocialStreamNinja-beta-data",
+    "notes": [
+        "This is the PRE-RELEASE (test build) channel of Social Stream Ninja and may contain issues.",
+        "Export your settings from the app before installing or updating.",
+        "Use the stable 'socialstreamninja' manifest if you want tested releases only."
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/steveseguin/social_stream/releases",
+        "jsonpath": "$[0].tag_name",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/steveseguin/social_stream/releases/download/v$version/socialstreamninja-portable.exe"
+    }
+}
