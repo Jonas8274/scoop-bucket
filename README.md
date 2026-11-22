@@ -133,9 +133,9 @@ irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/
 
 > **Note:** This one is installed from the Microsoft Store through winget. The Store updates it, not `scoop update`.
 
-## Installing netflix
+## Installing Netflix
 
-The Netflix app for Windows, for watching movies and TV shows (needs a Netflix subscription).
+The Netflix app for Windows, for watching movies and TV shows.
 
 ```powershell
 scoop install Jonas8272/netflix
