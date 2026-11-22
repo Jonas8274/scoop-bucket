@@ -5,7 +5,8 @@
 .DESCRIPTION
     1. Installs Scoop if it is missing.
     2. Installs git through Scoop if it is missing.
-    3. Adds the Jonas8272 bucket if it is not added yet.
+    3. Adds the Jonas8272 bucket if it is not added yet, or updates it if it is,
+       so newly added apps are picked up.
     4. Installs every app found in the bucket, one by one. A failing app does
        not stop the others, and a summary is printed at the end.
 
@@ -20,7 +21,7 @@
     Skip these apps.
 
 .EXAMPLE
-    .\install-all.ps1
+    irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-all.ps1 | iex
 
 .EXAMPLE
     .\install-all.ps1 -Exclude fxsound
@@ -29,8 +30,7 @@
     .\install-all.ps1 -Only mornye,socialstreamninja
 
 .NOTES
-    Run in a normal (non-admin) PowerShell window if Scoop is not installed yet,
-    because Scoop's installer refuses to run elevated.
+    Run in a normal (non-admin) PowerShell window if Scoop is not installed yet.
 #>
 
 [CmdletBinding()]
@@ -54,13 +54,20 @@ function Test-Admin {
     return $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
+$scoopRoot = if ($env:SCOOP) { $env:SCOOP } else { Join-Path $env:USERPROFILE 'scoop' }
+
 # 1. Scoop -------------------------------------------------------------------
 if (-not (Test-Command 'scoop')) {
     Write-Host 'Scoop not found. Installing Scoop...' -ForegroundColor Cyan
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-    Invoke-RestMethod -Uri 'https://get.scoop.sh' | Invoke-Expression
+    if (Test-Admin) {
+        Invoke-Expression "& {$(Invoke-RestMethod -Uri 'https://get.scoop.sh')} -RunAsAdmin"
+    } else {
+        Invoke-RestMethod -Uri 'https://get.scoop.sh' | Invoke-Expression
+    }
 
-    $env:PATH = "$env:USERPROFILE\scoop\shims;$env:PATH"
+    # Make scoop available in this session without reopening PowerShell
+    $env:PATH = "$scoopRoot\shims;$env:PATH"
 
     if (-not (Test-Command 'scoop')) {
         throw 'Scoop was installed but is not on PATH. Open a new PowerShell window and run this script again.'
@@ -69,12 +76,12 @@ if (-not (Test-Command 'scoop')) {
     Write-Host 'Scoop is already installed.' -ForegroundColor Green
 }
 
-# 2. git (needed to add buckets) ---------------------------------------------
+# 2. git (needed to add buckets) ----------------------------------------------
 if (-not (Test-Command 'git')) {
     Write-Host 'git not found. Installing git through Scoop...' -ForegroundColor Cyan
     scoop install git
     if ($LASTEXITCODE -ne 0) { throw 'Failed to install git through Scoop.' }
-    $env:PATH = "$env:USERPROFILE\scoop\shims;$env:PATH"
+    $env:PATH = "$scoopRoot\shims;$env:PATH"
 } else {
     Write-Host 'git is already installed.' -ForegroundColor Green
 }
@@ -86,7 +93,8 @@ $existing = scoop bucket list | Where-Object {
 
 if ($existing) {
     $BucketName = $existing.Name
-    Write-Host "Bucket '$BucketName' is already added." -ForegroundColor Green
+    Write-Host "Bucket '$BucketName' is already added. Updating it..." -ForegroundColor Green
+    scoop update
 } else {
     Write-Host "Adding bucket '$BucketName'..." -ForegroundColor Cyan
     scoop bucket add $BucketName $BucketUrl
@@ -94,13 +102,12 @@ if ($existing) {
 }
 
 # 4. Find the apps in the bucket ----------------------------------------------
-$root = if ($env:SCOOP) { $env:SCOOP } else { Join-Path $env:USERPROFILE 'scoop' }
-$bucketDir = Join-Path $root "buckets\$BucketName\bucket"
+$bucketDir = Join-Path $scoopRoot "buckets\$BucketName\bucket"
 if (-not (Test-Path $bucketDir)) {
-    $bucketDir = Join-Path $root "buckets\$BucketName"
+    $bucketDir = Join-Path $scoopRoot "buckets\$BucketName"
 }
 if (-not (Test-Path $bucketDir)) {
-    throw "Could not find the bucket folder for '$BucketName' under $root."
+    throw "Could not find the bucket folder for '$BucketName' under $scoopRoot."
 }
 
 $manifests = Get-ChildItem -Path $bucketDir -Filter '*.json' -File | Sort-Object Name
