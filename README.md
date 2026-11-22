@@ -149,6 +149,22 @@ irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/
 
 > **Note:** This one is installed from the Microsoft Store through winget. The Store updates it, not `scoop update`.
 
+## Installing Edge
+
+The Microsoft Edge browser.
+
+```powershell
+scoop install Jonas8272/edge
+```
+
+Or set up everything and install it with one script:
+
+```powershell
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-edge.ps1 | iex
+```
+
+> **Note:** This one is installed through winget. Edge is already built into Windows, so this usually just reports that it is installed. Edge updates itself, not `scoop update`.
+
 ## Updating
 
 Update Scoop and its bucket manifests:
