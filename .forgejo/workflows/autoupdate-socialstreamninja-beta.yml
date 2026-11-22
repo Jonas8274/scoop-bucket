@@ -1,0 +1,30 @@
+name: autoupdate-socialstreamninja-beta
+on:
+  schedule:
+    - cron: '44 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    container:
+      image: data.forgejo.org/oci/node:20-bookworm
+    steps:
+      - name: Install tools
+        run: apt-get update -qq && apt-get install -y -qq jq
+
+      - uses: actions/checkout@v4
+
+      - name: Update manifest
+        env:
+          GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
+        run: tr -d '\r' < scripts/update-socialstreamninja-beta.sh | bash
+
+      - name: Commit and push
+        run: |
+          git config user.name "autoupdate"
+          git config user.email "autoupdate@noreply.invalid"
+          if ! git diff --quiet; then
+            git commit -am "socialstreamninja-beta: update to $(jq -r .version bucket/socialstreamninja-beta.json)"
+            git push
+          fi
