@@ -218,7 +218,7 @@ scoop bucket rm Jonas8272
 - [Jonas8272 Scoop Bucket mirror repository (gitea)](https://git.jonas8272.com/Jonas8272/scoop-bucket)
 - [Status](https://status.jonas8272.com)
 
-> **Note:** You may want to save the links to the mirrors as they have generally better uptime than codefloe
+> **Note:** You may want to save the links to the mirrors as they have generally better uptime than codefloe (codefloes uptime is absolute trash)
 
 ## License
 
