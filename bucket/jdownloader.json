@@ -1,15 +1,18 @@
 {
-    "version": "0.0.0",
+    "version": "2026.11.23.0629",
     "description": "JDownloader 2 download manager (official bootstrap JAR; it downloads the app on first run)",
     "homepage": "https://jdownloader.org/",
     "license": "Freeware",
     "depends": "java/temurin-jre",
     "url": "https://installer.jdownloader.org/JDownloader.jar",
-    "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "hash": "388a1d028e65cbc63933a778ddbc9267c14e7e7858389ce31a10be7308adeb40",
     "pre_install": "Set-Content -Path \"$dir\\JDownloader.cmd\" -Value '@echo off', 'start \"\" javaw -jar \"%~dp0JDownloader.jar\"' -Encoding Ascii",
     "bin": "JDownloader.cmd",
     "shortcuts": [
-        ["JDownloader.cmd", "JDownloader 2"]
+        [
+            "JDownloader.cmd",
+            "JDownloader 2"
+        ]
     ],
     "persist": "cfg"
 }
