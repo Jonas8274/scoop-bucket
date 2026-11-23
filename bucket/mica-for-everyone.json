@@ -1,0 +1,14 @@
+{
+    "version": "1.0",
+    "description": "Mica For Everyone: applies Mica and other backdrop effects to the title bars and backgrounds of Win32 apps on Windows 11 (installed from the Microsoft Store via winget)",
+    "homepage": "https://github.com/MicaForEveryone/MicaForEveryone",
+    "license": "MIT",
+    "notes": "Needs Windows 11. The Microsoft Store updates this app, not 'scoop update'.",
+    "url": "https://jonas8272.codeberg.page/blank/#/blank.html",
+    "installer": {
+        "script": "winget install --id 9P8V68P4Z78P --source msstore --accept-package-agreements --accept-source-agreements"
+    },
+    "uninstaller": {
+        "script": "winget uninstall --id 9P8V68P4Z78P --source msstore"
+    }
+}

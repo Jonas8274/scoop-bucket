@@ -184,6 +184,22 @@ irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/
 
 > **Note:** This one is installed through winget. Edge is already built into Windows, so this usually just reports that it is installed. Edge updates itself, not `scoop update`.
 
+## Installing mica-for-everyone
+
+[Mica For Everyone](https://github.com/MicaForEveryone/MicaForEveryone): applies Mica and other backdrop effects to the title bars and backgrounds of Win32 apps on Windows 11.
+
+```powershell
+scoop install Jonas8272/mica-for-everyone
+```
+
+Or set up everything and install it with one script:
+
+```powershell
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-mica-for-everyone.ps1 | iex
+```
+
+> **Note:** This one is installed from the Microsoft Store through winget (the project's official Store listing). The Store updates it, not `scoop update`. It needs Windows 11.
+
 ## Installing vmware-workstation-pro
 
 VMware Workstation Pro: run virtual machines on Windows.
