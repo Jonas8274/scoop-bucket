@@ -186,7 +186,7 @@ irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/
 
 ## Installing MicaForEveryone
 
-[Mica For Everyone](https://github.com/MicaForEveryone/MicaForEveryone): applies Mica and other backdrop effects to the title bars and backgrounds of Win32 apps on Windows 11.
+[MicaForEveryone](https://github.com/MicaForEveryone/MicaForEveryone): applies Mica and other backdrop effects to the title bars and backgrounds of Win32 apps on Windows 11.
 
 ```powershell
 scoop install Jonas8272/MicaForEveryone
