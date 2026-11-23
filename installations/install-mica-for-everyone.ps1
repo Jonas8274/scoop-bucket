@@ -4,10 +4,10 @@
     the bucket first if they are missing.
 
 .DESCRIPTION
-    Mica For Everyone is installed from the Microsoft Store through winget, so
-    winget must be available (it ships with current Windows 10 and 11 as App
-    Installer). The app itself needs Windows 11. The Store updates it, not
-    "scoop update".
+    Mica For Everyone is installed from the project's signed MSIX package on
+    GitHub with Windows' built-in Add-AppxPackage (together with the Windows App
+    Runtime package it needs). No winget or Microsoft Store is used. The app is
+    made for Windows 11.
 
 .EXAMPLE
     irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-mica-for-everyone.ps1 | iex
@@ -33,15 +33,6 @@ function Test-Admin {
 }
 
 $scoopRoot = if ($env:SCOOP) { $env:SCOOP } else { Join-Path $env:USERPROFILE 'scoop' }
-
-# 0. winget (the app comes from the Microsoft Store) --------------------------
-if (-not (Test-Command 'winget')) {
-    throw 'winget was not found. Install "App Installer" from the Microsoft Store, then run this script again.'
-}
-
-if ([Environment]::OSVersion.Version.Build -lt 22000) {
-    Write-Warning 'Mica For Everyone is made for Windows 11. It may not install or do anything on Windows 10.'
-}
 
 # 1. Scoop -------------------------------------------------------------------
 if (-not (Test-Command 'scoop')) {

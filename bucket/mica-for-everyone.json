@@ -1,14 +1,76 @@
 {
-    "version": "1.0",
-    "description": "Mica For Everyone: applies Mica and other backdrop effects to the title bars and backgrounds of Win32 apps on Windows 11 (installed from the Microsoft Store via winget)",
+    "version": "2.0.6.0",
+    "description": "Mica For Everyone: applies Mica and other backdrop effects to the title bars and backgrounds of Win32 apps on Windows 11 (signed MSIX package from the project's GitHub releases)",
     "homepage": "https://github.com/MicaForEveryone/MicaForEveryone",
     "license": "MIT",
-    "notes": "Needs Windows 11. The Microsoft Store updates this app, not 'scoop update'.",
-    "url": "https://jonas8272.codeberg.page/blank/#/blank.html",
+    "notes": [
+        "Made for Windows 11.",
+        "Installed as a normal Windows app package with Windows' built-in Add-AppxPackage, together with the Windows App Runtime it needs. No winget or Microsoft Store is used.",
+        "If you installed Mica For Everyone from the Microsoft Store before, remove that copy first."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/2.0.6.0/bundle.msixbundle",
+                "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/2.0.6.0/Microsoft.WindowsAppRuntime.2.x64.msix"
+            ],
+            "hash": [
+                "d8b7985bf64eaaf1c095b6da95228f2015285b5a6a5bf79bd43ab9707e13f4e8",
+                "137fcd11faeddc8ec8585b92efb5b193d7d14496965ba0f152d3ffc04dc15c8e"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/2.0.6.0/bundle.msixbundle",
+                "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/2.0.6.0/Microsoft.WindowsAppRuntime.2.x86.msix"
+            ],
+            "hash": [
+                "d8b7985bf64eaaf1c095b6da95228f2015285b5a6a5bf79bd43ab9707e13f4e8",
+                "d271b8c607cdff7de2a04ac3894304a8553dcfc66686b0247b1f3b110c4e0d6f"
+            ]
+        },
+        "arm64": {
+            "url": [
+                "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/2.0.6.0/bundle.msixbundle",
+                "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/2.0.6.0/Microsoft.WindowsAppRuntime.2.arm64.msix"
+            ],
+            "hash": [
+                "d8b7985bf64eaaf1c095b6da95228f2015285b5a6a5bf79bd43ab9707e13f4e8",
+                "97b6b2e0f596963c9156799f3af451e47d70131548ab6d522eb1bbe7cff5af1c"
+            ]
+        }
+    },
     "installer": {
-        "script": "winget install --id 9P8V68P4Z78P --source msstore --accept-package-agreements --accept-source-agreements"
+        "script": [
+            "$micaBundle = Get-ChildItem -Path $dir -File | Where-Object { $_.Extension -eq '.msixbundle' } | Select-Object -First 1",
+            "$micaDeps = @(Get-ChildItem -Path $dir -File | Where-Object { $_.Extension -eq '.msix' } | ForEach-Object { $_.FullName })",
+            "Add-AppxPackage -Path $micaBundle.FullName -DependencyPath $micaDeps -ErrorAction Stop"
+        ]
     },
     "uninstaller": {
-        "script": "winget uninstall --id 9P8V68P4Z78P --source msstore"
+        "script": "Get-AppxPackage -Name 'MicaForEveryone.MicaForEveryone2' | Remove-AppxPackage -PreserveApplicationData"
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/$version/bundle.msixbundle",
+                    "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/$version/Microsoft.WindowsAppRuntime.2.x64.msix"
+                ]
+            },
+            "32bit": {
+                "url": [
+                    "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/$version/bundle.msixbundle",
+                    "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/$version/Microsoft.WindowsAppRuntime.2.x86.msix"
+                ]
+            },
+            "arm64": {
+                "url": [
+                    "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/$version/bundle.msixbundle",
+                    "https://github.com/MicaForEveryone/MicaForEveryone/releases/download/$version/Microsoft.WindowsAppRuntime.2.arm64.msix"
+                ]
+            }
+        }
     }
 }
