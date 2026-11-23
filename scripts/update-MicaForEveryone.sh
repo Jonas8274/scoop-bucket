@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-M=bucket/mica-for-everyone.json
+M=bucket/MicaForEveryone.json
 REPO=MicaForEveryone/MicaForEveryone
 
 auth=()
