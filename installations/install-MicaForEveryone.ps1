@@ -1,16 +1,16 @@
 <#
 .SYNOPSIS
-    Installs Mica For Everyone from the Jonas8272 bucket. Sets up Scoop, git and
+    Installs MicaForEveryone from the Jonas8272 bucket. Sets up Scoop, git and
     the bucket first if they are missing.
 
 .DESCRIPTION
-    Mica For Everyone is installed from the project's signed MSIX package on
+    MicaForEveryone is installed from the project's signed MSIX package on
     GitHub with Windows' built-in Add-AppxPackage (together with the Windows App
     Runtime package it needs). No winget or Microsoft Store is used. The app is
     made for Windows 11.
 
 .EXAMPLE
-    irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-mica-for-everyone.ps1 | iex
+    irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-MicaForEveryone.ps1 | iex
 
 .NOTES
     Run in a normal (non-admin) PowerShell window if Scoop is not installed yet.
@@ -18,7 +18,7 @@
 
 $ErrorActionPreference = 'Stop'
 
-$App        = 'mica-for-everyone'
+$App        = 'MicaForEveryone'
 $BucketName = 'Jonas8272'
 $BucketUrl  = 'https://codefloe.com/Jonas8272/scoop-bucket'
 
