@@ -1,6 +1,6 @@
 {
     "version": "2.0.6.0",
-    "description": "Mica For Everyone: applies Mica and other backdrop effects to the title bars and backgrounds of Win32 apps on Windows 11 (signed MSIX package from the project's GitHub releases)",
+    "description": "MicaForEveryone: applies Mica and other backdrop effects to the title bars and backgrounds of Win32 apps on Windows 11 (signed MSIX package from the project's GitHub releases)",
     "homepage": "https://github.com/MicaForEveryone/MicaForEveryone",
     "license": "MIT",
     "notes": [
