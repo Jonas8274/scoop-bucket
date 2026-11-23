@@ -115,6 +115,14 @@ if (-not $manifests) {
     throw "No app manifests found in $bucketDir."
 }
 
+# Some apps (for example jdownloader) depend on packages from the official 'java' bucket
+$needsJava = $manifests | Where-Object { (Get-Content -Path $_.FullName -Raw) -match '"depends"\s*:\s*"java/' }
+if ($needsJava -and -not (scoop bucket list | Where-Object { $_.Name -eq 'java' })) {
+    Write-Host "Adding the 'java' bucket..." -ForegroundColor Cyan
+    scoop bucket add java
+    if ($LASTEXITCODE -ne 0) { throw "Failed to add the 'java' bucket." }
+}
+
 # 5. Install them ------------------------------------------------------------
 $isAdmin = Test-Admin
 $results = @()

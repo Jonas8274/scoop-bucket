@@ -204,6 +204,24 @@ irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/
 
 > **Note:** For other versions check out [gandli's](https://github.com/gandli/scoop-vmware) bucket
 
+## Installing jdownloader
+
+JDownloader 2: a download manager that grabs files and links from many sites.
+
+```powershell
+scoop install Jonas8272/jdownloader
+```
+
+Or set up everything and install it with one script:
+
+```powershell
+irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-jdownloader.ps1 | iex
+```
+
+> **Note:** This uses JDownloader's official JAR file, so it needs Java. Scoop installs `java/temurin-jre` for you from the official `java` bucket (the scripts add that bucket if it is missing). The first time you start JDownloader, it downloads the rest of the app from its own servers.
+
+> **Note:** JDownloader updates itself. The bucket re-checks the official JAR every day and updates the manifest when the file changes, so `scoop update` only fetches the small bootstrap file again.
+
 ## Updating
 
 Update Scoop and its bucket manifests:
