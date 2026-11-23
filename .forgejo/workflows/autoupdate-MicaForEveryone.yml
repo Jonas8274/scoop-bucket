@@ -18,7 +18,7 @@ jobs:
       - name: Update manifest
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
-        run: tr -d '\r' < scripts/update-mica-for-everyone.sh | bash
+        run: tr -d '\r' < scripts/update-MicaForEveryone.sh | bash
 
       - name: Commit and push
         run: |
