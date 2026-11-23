@@ -1,4 +1,4 @@
-name: autoupdate-mica-for-everyone
+name: autoupdate-MicaForEveryone
 on:
   schedule:
     - cron: '53 */6 * * *'
@@ -25,6 +25,6 @@ jobs:
           git config user.name "autoupdate"
           git config user.email "autoupdate@users.noreply.codefloe.com"
           if ! git diff --quiet; then
-            git commit -am "mica-for-everyone: update to $(jq -r .version bucket/mica-for-everyone.json)"
+            git commit -am "MicaForEveryone: update to $(jq -r .version bucket/MicaForEveryone.json)"
             git push
           fi
