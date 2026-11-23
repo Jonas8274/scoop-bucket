@@ -198,9 +198,9 @@ Or set up everything and install it with one script:
 irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/install-mica-for-everyone.ps1 | iex
 ```
 
-> **Note:** This one does not need winget or the Microsoft Store. It downloads the project's signed MSIX package from its [GitHub](https://github.com/MicaForEveryone/MicaForEveryone/releases) (checked against a pinned SHA-256 hash) together with the Windows App Runtime package it depends on, and installs both with Windows' built-in `Add-AppxPackage`. A normal (non-admin) PowerShell is enough.
+> **Note:** This one does not need winget or the Microsoft Store. It downloads the project's signed MSIX package from its [GitHub](https://github.com/MicaForEveryone/MicaForEveryone/releases) (checked against a pinned SHA-256 hash) together with the Windows App Runtime package it depends on, and installs both with Windows' built-in `Add-AppxPackage`.
 
-> **Note:** It is made for Windows 11. If you installed it from the Microsoft Store before, remove that copy first. The uninstall step keeps the app's settings, so they survive updates.
+> **Note:** It is made for Windows 11. If you installed it from the Microsoft Store before, remove that copy first. The uninstall step keeps the app's settings, so they should survive updates.
 
 ## Installing vmware-workstation-pro
 
