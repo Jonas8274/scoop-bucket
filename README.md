@@ -202,7 +202,7 @@ irm https://codefloe.com/Jonas8272/scoop-bucket/raw/branch/master/installations/
 
 > **Note:** The installer (about 267 MB) is downloaded from the [`vmwareworkstationarchive`](https://archive.org/details/vmwareworkstationarchive) item on archive.org, a third-party upload of Broadcom's installer. The download is checked against a pinned SHA-256 hash, and the file's digital signature is verified as Broadcom Inc. VMware is proprietary software, so Broadcom's licence terms apply.
 
-> **Note:** For other versions check out [`gandli's`](https://github.com/gandli/scoop-vmware) bucket
+> **Note:** For other versions check out [gandli's](https://github.com/gandli/scoop-vmware) bucket
 
 ## Updating
 
