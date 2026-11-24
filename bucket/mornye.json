@@ -1,16 +1,16 @@
 {
-    "version": "5.4.0",
+    "version": "5.4.5",
     "description": "Open-source desktop music player for your personal library",
     "homepage": "https://desktop.mornye.com/",
     "license": "LGPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v5.4.0/Mornye-v5.4.0-windows-x64-portable.zip",
-            "hash": "ef43280811c7e2d65d5fb6c30be87cd0295f6572746c27cefc15e754a3be9dcd"
+            "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v5.4.5/Mornye-v5.4.5-windows-x64-portable.zip",
+            "hash": "75ae2f66a3eab303e452e3a91a999421027b88eab7d4bd3bdc742f48481511e0"
         },
         "arm64": {
-            "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v5.4.0/Mornye-v5.4.0-windows-arm64-portable.zip",
-            "hash": "494c573a1fef7a512950d1f431c26fea7ad6d79f985227ac7d9160282763e704"
+            "url": "https://github.com/mornyeapp/Mornye-Desktop/releases/download/v5.4.5/Mornye-v5.4.5-windows-arm64-portable.zip",
+            "hash": "cd52239d5058908c2755af8d61f66b5e29e5b4f990e53dffe4d8dbff11d5273a"
         }
     },
     "bin": "mornye.exe",
