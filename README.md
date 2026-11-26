@@ -277,4 +277,6 @@ scoop bucket rm Jonas8272
 
 ## License
 
-See the repository for licensing information.
+UNLICENCE
+
+[![Public domain](https://raw.githubusercontent.com/unlicense/unlicense.org/5b05e26d711e32508f46d7a1381f988079e42b4e/public/pd-icon.png)](https://unlicense.org/)
